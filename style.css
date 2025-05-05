@@ -1158,3 +1158,116 @@ body.dark-mode #font-family-select option { background-color: var(--card-bg-colo
      }
 
 }
+/* ============================================= */
+/* == CSS BỔ SUNG CHO HIỂN THỊ MỤC TIÊU == */
+/* ============================================= */
+
+/* Định dạng cho khu vực hiển thị thông tin hạn chót */
+.note-due-date-info {
+    font-size: 0.8em; /* Cỡ chữ nhỏ hơn */
+    padding: 3px 8px; /* Padding nhỏ */
+    margin-top: 8px; /* Khoảng cách với nội dung trên */
+    margin-bottom: 8px; /* Khoảng cách với tags/timestamp dưới */
+    border-radius: 4px;
+    display: inline-block; /* Chỉ chiếm độ rộng cần thiết */
+    border-left: 3px solid; /* Đường kẻ dọc bên trái */
+    opacity: 0.9;
+}
+
+/* Màu sắc dựa trên trạng thái (dùng biến màu phụ/cảnh báo) */
+.note-due-date-info.on-track {
+    background-color: rgba(var(--rgb-success-color, 25, 135, 84), 0.1); /* Nền xanh lá nhạt */
+    border-left-color: var(--success-color);
+    color: var(--success-color); /* Chữ màu xanh lá */
+}
+body.dark-mode .note-due-date-info.on-track {
+    color: #a3be8c; /* Màu xanh lá trong theme tối (ví dụ Nord) */
+    border-left-color: #a3be8c;
+    background-color: rgba(163, 190, 140, 0.15);
+}
+
+
+.note-due-date-info.due-soon {
+    background-color: rgba(var(--rgb-warning-color, 255, 193, 7), 0.15); /* Nền vàng nhạt */
+    border-left-color: var(--pinned-color); /* Dùng màu vàng ghim */
+    color: #b58900; /* Màu vàng đậm hơn */
+}
+body.dark-mode .note-due-date-info.due-soon {
+    color: #fabd2f; /* Màu vàng trong theme tối (ví dụ Gruvbox) */
+    border-left-color: #fabd2f;
+    background-color: rgba(250, 189, 47, 0.15);
+}
+
+
+.note-due-date-info.overdue {
+    background-color: rgba(var(--rgb-danger-color, 220, 53, 69), 0.1); /* Nền đỏ nhạt */
+    border-left-color: var(--danger-color);
+    color: var(--danger-color); /* Chữ màu đỏ */
+}
+body.dark-mode .note-due-date-info.overdue {
+    color: #bf616a; /* Màu đỏ trong theme tối (ví dụ Nord) */
+    border-left-color: #bf616a;
+    background-color: rgba(191, 97, 106, 0.15);
+}
+
+
+/* Định dạng phần text ngày và phần text còn lại */
+.note-due-date-info .due-date-text {
+    font-weight: 500; /* Chữ ngày đậm hơn chút */
+}
+.note-due-date-info .due-date-remaining {
+    margin-left: 5px;
+    font-style: italic; /* Chữ nghiêng cho phần còn lại */
+}
+
+/* Định dạng cho ghi chú/mục tiêu đã hoàn thành */
+.note.goal-completed {
+    opacity: 0.7; /* Làm mờ toàn bộ thẻ note */
+    /* Hoặc chỉ làm mờ chữ: */
+    /* color: var(--secondary-color); */
+}
+
+/* Định dạng cho chữ bị gạch ngang khi hoàn thành */
+.note.goal-completed .note-title,
+.note.goal-completed .note-content,
+.note.goal-completed .goal-completed-text { /* Áp dụng cho cả class mới */
+    text-decoration: line-through;
+    color: var(--secondary-color); /* Màu chữ mờ đi */
+}
+
+/* Style cho input mục tiêu trong chế độ sửa (thêm vào nếu cần) */
+.goal-edit-container {
+    /* margin-top: 15px;
+    padding-top: 15px; */
+    border-top: 1px dashed var(--border-color); /* Đường kẻ phân cách */
+}
+.goal-edit-container label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.85em;
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+.goal-edit-container input[type="date"],
+.goal-edit-container input[type="checkbox"] {
+    margin-bottom: 8px; /* Khoảng cách dưới */
+}
+.goal-edit-container input[type="date"] {
+    padding: 4px 8px;
+    border: 1px solid var(--input-border-color);
+    border-radius: 4px;
+    font-size: 0.9em;
+    width: auto; /* Hoặc 100% nếu muốn */
+}
+.goal-edit-container input[type="checkbox"] {
+    margin-right: 6px;
+    width: 15px;
+    height: 15px;
+    accent-color: var(--primary-color); /* Màu checkbox */
+}
+.goal-edit-container label.flex { /* Style cho label checkbox */
+    display: inline-flex; /* Để label và checkbox cùng hàng */
+    align-items: center;
+    cursor: pointer;
+}
+
